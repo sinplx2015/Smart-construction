@@ -1,9 +1,7 @@
-from turtle import color
 from numpy.random import randint
 from numpy.random import rand
 import matplotlib.pyplot as plt
-import random
-random.seed()
+
 def decode(bounds, n_bits, bitstring):
     """
     字符串解码并转化为对应区间的值
@@ -68,7 +66,7 @@ def genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut,i
         scores = [objective(d) for d in decoded]        #计算适应度
         
         if isplot:            
-            subplot.scatter([n_iter+1]*n_pop, scores, c = 'r', marker= '.')
+            subplot.scatter([gen+1]*n_pop, scores, c = 'r', marker= '.')
 
         #选择结果
         for i in range(n_pop):
@@ -104,7 +102,7 @@ def main():
     n_pop = 100   #种群规模    
     r_cross = 0.9  #交叉比例    
     r_mut = 0.1 / (float(n_bits) * len(bounds))     #变异概率
-    isplot = False   #是否绘图
+    isplot = True   #是否绘图
     
     best, score = genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut, isplot)
     
