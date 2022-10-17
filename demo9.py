@@ -72,7 +72,7 @@ def genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut,i
 
         #选择结果
         for i in range(n_pop):
-            if scores[i] <= best_eval:
+            if scores[i] < best_eval:
                 best, best_eval = pop[i], scores[i]
                 print("{} epoch,  f{} = {}".format(gen,  decoded[i], scores[i]))
         # print(scores)
@@ -99,7 +99,7 @@ def objective(x):
 def main():
     #参数设置
     bounds = [[0, 9.0], [1.0, 7.0], [2.0, 6.0],]     #边界条件, 边界维度与n_pop控制pop维度  
-    n_iter = 10   #迭代次数
+    n_iter = 100   #迭代次数
     n_bits = 16   #比特位    
     n_pop = 100   #种群规模    
     r_cross = 0.9  #交叉比例    
